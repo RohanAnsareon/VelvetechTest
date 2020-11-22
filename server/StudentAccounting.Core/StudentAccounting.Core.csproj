@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="9.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.10" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StudentAccounting.Infrastructure\StudentAccounting.Infrastructure.csproj" />
+    <ProjectReference Include="..\StudentAccounting.Shared\StudentAccounting.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

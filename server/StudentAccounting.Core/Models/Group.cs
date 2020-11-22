@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StudentAccounting.DAL.Entities
+namespace StudentAccounting.Core.Models
 {
     public class Group
     {

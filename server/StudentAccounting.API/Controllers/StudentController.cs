@@ -1,25 +1,39 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using StudentAccounting.Infrastructure.Entities;
+using StudentAccounting.Shared.DTOs.Student;
+using StudentAccounting.Shared.Interfaces;
 
 namespace StudentAccounting.API.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class StudentController : ControllerBase
     {
-        public StudentController(ILogger<StudentController> logger)
+        private readonly IRepository<Student> _repository;
+
+        public StudentController(IRepository<Student> repository)
         {
+            _repository = repository;
+        }
+
+        [HttpPost]
+        public async Task Post([FromBody] CreateStudentRequest request)
+        {
+            await _repository.Insert(new Student
+            {
+                Name = request.Name,
+                Surname = request.Surname,
+                Middlename = request.Middlename,
+                UniqueStudentId = request.UniqueStudentId,
+                Gender = request.Gender
+            });
         }
 
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            var client = new HttpClient();
-            var response = await client.GetAsync("https://google.com");
-            if (response.IsSuccessStatusCode) return Ok();
-            return BadRequest();
+            return Ok("djbvsv");
         }
     }
 }
