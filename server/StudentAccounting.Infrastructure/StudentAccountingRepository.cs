@@ -23,10 +23,11 @@ namespace StudentAccounting.Infrastructure
 
         public async Task<T> GetById(Guid id) => await _entities.FindAsync(id);
 
-        public async Task Insert(T entity)
+        public async Task<Guid> Insert(T entity)
         {
             await _entities.AddAsync(entity);
             await _context.SaveChangesAsync();
+            return entity.Id;
         }
 
         public async Task Update(T entity)

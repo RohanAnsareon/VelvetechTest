@@ -1,4 +1,5 @@
-﻿using StudentAccounting.Shared.Enums;
+﻿using System;
+using StudentAccounting.Shared.Enums;
 
 namespace StudentAccounting.Shared.DTOs.Student
 {
@@ -9,5 +10,7 @@ namespace StudentAccounting.Shared.DTOs.Student
         public string Middlename { get; set; }
         public string UniqueStudentId { get; set; }
         public Gender Gender { get; set; }
+
+        public Guid[] Groups { get; set; }
     }
 }

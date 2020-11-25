@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Reflection;
+using AutoMapper;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StudentAccounting.Core.Services;
 using StudentAccounting.Core.Services.Abstractions;
@@ -13,6 +15,10 @@ namespace StudentAccounting.Core
             services.AddInfrastructure(configuration);
 
             services.AddScoped<IUniqueCheckService, StudentUniqueCheckService>();
+
+            services.AddTransient<IStudentService, StudentService>();
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             return services;
         }
