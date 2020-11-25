@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using StudentAccounting.Infrastructure.Entities;
 using StudentAccounting.Shared.DTOs.Student;
@@ -30,10 +31,36 @@ namespace StudentAccounting.API.Controllers
             });
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult> Get(Guid id)
+        {
+            return Ok(await _repository.GetById(id));
+        }
+
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            return Ok("djbvsv");
+            return Ok(await _repository.GetAll());
+        }
+
+        [HttpPut]
+        public async Task Put(Guid id, EditStudentRequest request)
+        {
+            await _repository.Update(new Student
+            {
+                Id = id,
+                Name = request.Name,
+                Surname = request.Surname,
+                Middlename = request.Middlename,
+                Gender = request.Gender,
+                UniqueStudentId = request.UniqueStudentId
+            });
+        }
+
+        [HttpDelete]
+        public async Task Delete(Guid id)
+        {
+            await _repository.Delete(id);
         }
     }
 }

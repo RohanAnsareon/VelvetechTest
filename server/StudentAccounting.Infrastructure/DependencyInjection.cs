@@ -10,7 +10,7 @@ namespace StudentAccounting.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             #region DbContext
-            var connectionString = configuration.GetConnectionString("Default");
+            var connectionString = configuration.GetConnectionString("Local");
 
             services.AddDbContext<StudentAccountingDbContext>(options =>
             {

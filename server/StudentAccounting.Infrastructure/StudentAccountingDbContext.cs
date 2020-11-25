@@ -10,6 +10,7 @@ namespace StudentAccounting.Infrastructure
 
         public DbSet<Student> Students { get; set; }
         public DbSet<Group> Groups { get; set; }
+        public DbSet<StudentGroup> StudentGroups { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

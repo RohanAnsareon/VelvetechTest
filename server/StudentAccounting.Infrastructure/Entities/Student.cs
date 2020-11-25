@@ -14,6 +14,6 @@ namespace StudentAccounting.Infrastructure.Entities
         public Gender Gender { get; set; }
         public string UniqueStudentId { get; set; }
 
-        public virtual ICollection<Group> Groups { get; set; }
+        public virtual ICollection<StudentGroup> StudentGroups { get; set; }
     }
 }
