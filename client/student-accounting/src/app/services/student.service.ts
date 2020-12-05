@@ -1,41 +1,36 @@
-import {Injectable} from '@angular/core';
-import {Student} from '../models/student';
-import {Gender} from '../enums/gender.enum';
+import { Injectable } from '@angular/core';
+import { Student } from '../models/student';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
 
+  students: Student[];
+
   constructor() {
+    this.students = [
+      {
+        name: 'Orkhan',
+        surname: 'Ansar',
+        middlename: 'Aydin',
+        gender: 'Male',
+        studentIdentity: 'Dimbir',
+        id: ''
+      }
+    ]
   }
 
   getStudents(): Student[] {
-    return [
-      new Student(
-        '143254-45242-45425',
-        'Orkhan',
-        'Ansar',
-        'Aydin',
-        Gender.Male,
-        'dimbir'
-      ),
-      new Student(
-        '143254-45242-45426',
-        'Sevgi',
-        'Yusifova',
-        'Ilqar',
-        Gender.Female,
-        'Love'
-      ),
-      new Student(
-        '143254-45242-45427',
-        'Altun',
-        'Mursalov',
-        'Nazim',
-        Gender.Male,
-        'Baltun'
-      )
-    ];
+    return this.students;
+  }
+
+  addStudent(student: Student) {
+    this.students.push(student);
+  }
+
+  editStudent(student: Student) {
+    console.log(student);
+    this.students.push(student);
   }
 }

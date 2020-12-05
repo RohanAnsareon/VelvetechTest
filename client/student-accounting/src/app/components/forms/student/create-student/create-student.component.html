@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>Add Student</h1>
+<div mat-dialog-content>
+    <form class="form" [formGroup]="userProps">
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input formControlName="name" matInput autocomplete="off">
+            <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                <span *ngIf="name.errors.required">Name is required</span>
+                <span *ngIf="name.errors.maxlength">Max length for name is 40</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Surname</mat-label>
+            <input formControlName="surname" matInput autocomplete="off">
+            <mat-error *ngIf="surname.invalid && (surname.dirty || surname.touched)">
+                <span *ngIf="surname.errors.required">Surname is required</span>
+                <span *ngIf="surname.errors.maxlength">Max length for surname is 40</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Middlename</mat-label>
+            <input formControlName="middlename" matInput autocomplete="off">
+            <mat-error *ngIf="middlename.invalid && (middlename.dirty || middlename.touched)">
+                <span *ngIf="middlename.errors.maxlength">Max length for middlename is 60</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Student Identity</mat-label>
+            <input formControlName="studentIdentity" matInput autocomplete="off">
+            <mat-error *ngIf="studentIdentity.invalid && (studentIdentity.dirty || studentIdentity.touched)">
+                <span *ngIf="studentIdentity.errors.minlength">Min length for name is 6</span>
+                <span *ngIf="studentIdentity.errors.maxlength">Max length for name is 16</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+                <mat-option value="Male">
+                    Male
+                </mat-option>
+                <mat-option value="Female">
+                    Female
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCloseClick()">Cancel</button>
+    <button mat-button [mat-dialog-close]="userProps" cdkFocusInitial>Submit</button>
+</div>
